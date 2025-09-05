@@ -1,16 +1,13 @@
-// components/ScrollToFooterButton.tsx
-"use client";
+// If Nav is already a client component that's fine; otherwise this can be server too.
+import Link from "next/link";
 
-import { useRef } from "react";
-
-export default function ScrollToFooterButton() {
-  const footerRef = useRef<HTMLButtonElement>(null);
-  function handleClick() {
-    footerRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
-  } // use Ref instead of document.getElementById
+export default function ScrollToFooterLink() {
   return (
-    <button ref={footerRef} onClick={handleClick} className="text-sm rounded px-3 py-1 border hover:bg-gray-50">
-      Scroll to footer
-    </button>
+    <Link
+      href="#site-footer"
+      className="text-sm px-4 py-2 rounded-[70px] bg-black text-white transition-opacity hover:opacity-80"
+    >
+      contact me
+    </Link>
   );
 }
