@@ -1,19 +1,37 @@
+import VideoComponent from "@/components/VideoComponent";
+import VideoSkeleton from "@/components/VideoSkeleton";
+import { COMPANY_LOGOS } from "@/lib/assets";
+import { Suspense } from "react";
+import Image from "next/image";
+
 export default function Home() {
   return (
     <main id="content" className="mx-auto max-w-7xl px-4">
       {/* 1) HERO / INTRO */}
-      <section id="hero" aria-label="Introduction" className="flex justify-between py-10 border-b">
-        <div className="max-w-9/12">
-          <h1 className="text-7xl font-semibold leading-20 ">
-            Empowering <span className="text-accent">consumers</span> through elevated experiences.
-          </h1>
-          <p className="mt-6 text-lg text-gray-700">
-            Designing responsibly and responsively to make a difference!
+      <section id="hero" aria-label="Introduction" className="py-10">
+        <div className="flex justify-between pb-8">
+          <div className="max-w-9/12">
+            <h1 className="text-7xl font-semibold leading-20 ">
+              Empowering <span className="text-accent">consumers</span> through elevated experiences.
+            </h1>
+            <p className="mt-6 text-lg text-gray-700 font-secondary">
+              Designing responsibly and responsively to make a difference!
+            </p>
+          </div>
+          <p className="mt-2 text-gray-600 self-end">
+            scroll to learn more
           </p>
-        </div>
-        <p className="mt-2 text-gray-600 self-end">
-          scroll to learn more
-        </p>
+      </div>
+      <Suspense fallback={<VideoSkeleton />}>
+        <VideoComponent url="https://vusgicpr9kf2hrzd.public.blob.vercel-storage.com/folio_home_video_2" />
+      </Suspense>
+
+      {/* Images of companies worked for */}
+      <div className="flex justify-between mt-20">
+        {COMPANY_LOGOS.map((logo) => (
+          <Image key={logo.alt} src={logo.src} alt={logo.alt} width={120} height={100} />
+        ))}
+      </div>
       </section>
 
 
@@ -26,7 +44,7 @@ export default function Home() {
 
 
       {/* 2) WORK */}
-      <section id="work" aria-labelledby="work-heading" className="py-16 border-b">
+      <section id="work" aria-labelledby="work-heading" className="py-16 border-b bg-black">
         <h2 id="work-heading" className="text-2xl font-semibold">Work</h2>
         <p className="mt-3 text-gray-700">
           Short bio goes here. Summarize your background, areas of expertise, and

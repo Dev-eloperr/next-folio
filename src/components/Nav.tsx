@@ -17,7 +17,7 @@ export default function Nav() {
 
   return (
     <header className="sticky top-0 z-50 bg-white drop-shadow-md">
-      <nav className="mx-auto max-w-7xl px-4 h-[120px] flex items-center justify-between">
+      <nav className="mx-auto max-w-7xl px-4 h-[120px] flex items-center justify-between font-secondary">
         <div className="flex items-center gap-2">
           {links.map(({ href, label }) => (
             <Link
