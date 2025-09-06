@@ -40,8 +40,12 @@ export default function Home() {
       {/* 2) WORK */}
       <section id="work" aria-labelledby="work-heading" className="py-16 border-b bg-black text-white">
         <div className="default-container">
-          <CountTicker start={0} end={100} duration={1000} caption="Years of Experience" />
-          <h2 id="work-heading" className="text-2xl font-semibold">My Work</h2>
+          <div className="flex justify-evenly">
+            <CountTicker start={0} end={50} duration={1500} caption="Projects Delivered" easing="out-expo"/>
+            <CountTicker start={0} end={15} duration={1500} caption="Clients across the Globe" easing="out-expo"/>
+            <CountTicker start={0} end={4} duration={1500} caption="Years of Experience" easing="out-expo"/>
+          </div>
+          {/* <h2 id="work-heading" className="text-2xl font-semibold">My Work</h2> */}
         </div>
 
       </section>
