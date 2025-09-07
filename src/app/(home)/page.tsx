@@ -5,6 +5,11 @@ import { Suspense } from "react";
 import Image from "next/image";
 import CountTicker from "@/components/CountTicker";
 
+export const metadata = {
+  title: "Raashi Bhandari",
+  description: "Raashi Bhandari Portfolio", 
+}
+
 export default function Home() {
   return (
     <main id="content" className="mx-auto">
@@ -12,7 +17,7 @@ export default function Home() {
       <section id="hero" aria-label="Introduction" className="default-container py-10">
         <div className="flex justify-between pb-8">
           <div className="max-w-9/12">
-            <h1 className="text-7xl font-semibold leading-20 ">
+            <h1 className="text-[84px] font-semibold leading-[112px] font-700">
               Empowering <span className="text-accent">consumers</span> through elevated experiences.
             </h1>
             <p className="mt-6 text-lg text-gray-700 font-secondary">
@@ -30,7 +35,7 @@ export default function Home() {
         {/* Images of companies worked for */}
         <div className="flex justify-between mt-20">
           {COMPANY_LOGOS.map((logo) => (
-            <Image key={logo.alt} src={logo.src} alt={logo.alt} width={120} height={100} />
+            <Image key={logo.alt} src={logo.src} alt={logo.alt} width={120} height={100} loading="lazy" />
           ))}
         </div>
       </section>

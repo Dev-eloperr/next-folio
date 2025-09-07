@@ -28,6 +28,6 @@
 
 @layer utilities {
   .default-container {
-    @apply max-w-7xl px-4 mx-auto;
+    @apply max-w-[1600px] px-8 mx-auto;
   }
 }
