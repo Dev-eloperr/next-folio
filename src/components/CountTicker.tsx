@@ -120,7 +120,7 @@ export default function CountTicker({
           }
         }
       },
-      { threshold: 0.25 }
+      { threshold: 0.8 }
     );
 
     io.observe(node);

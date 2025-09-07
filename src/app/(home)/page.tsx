@@ -12,6 +12,7 @@ import workImage2 from "@/assets/home-work/work2.png";
 import workImage3 from "@/assets/home-work/work3.png";
 import AnimatedImageList from "@/components/AnimatedImageList";
 import { THINGS_I_DO } from "@/assets/things-i-do/manifest";
+import quoteIcon from "@/assets/others/quote_icon.svg"
 
 export const metadata = {
   title: "Raashi Bhandari",
@@ -28,7 +29,7 @@ export default function Home() {
             <AnimatedText
               text="Empowering consumers through elevated experiences."
               as="h1"
-              className="text-[84px] font-semibold leading-[112px] font-700"
+              className="text-[84px] font-semibold leading-[104px] font-700"
               baseDelay={0}
               wordDelay={100}
               highlightWords={{ "consumers": "text-accent" }}
@@ -118,42 +119,12 @@ export default function Home() {
         </section>
       </AnimatedSection>
 
-      {/* 4) SELECTED WORK */}
+      {/* 4) QUOTE */}
       <AnimatedSection delay={0}>
-        <section id="work" aria-labelledby="work-heading" className="py-16 border-b bg-black">
-          <div className="default-container">
-            <h2 id="work-heading" className="text-2xl font-semibold">Selected Work</h2>
-            <p className="mt-3 text-gray-700">A few projects and case studies.</p>
-            <ul role="list" className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <li>
-                <article aria-labelledby="proj-1-title" className="border rounded-xl p-4">
-                  <header>
-                    <h3 id="proj-1-title" className="text-lg font-medium">Project One</h3>
-                  </header>
-                  <p className="mt-2 text-gray-700">Brief one-liner about impact and scope.</p>
-                  <p className="mt-2 text-sm text-gray-600">
-                    <time dateTime="2024-06">Jun 2024</time> · React, Next.js
-                  </p>
-                  <footer className="mt-3">
-                    <a href="/work/project-one" className="underline text-sm">Read case study →</a>
-                  </footer>
-                </article>
-              </li>
-              <li>
-                <article aria-labelledby="proj-2-title" className="border rounded-xl p-4">
-                  <header>
-                    <h3 id="proj-2-title" className="text-lg font-medium">Project Two</h3>
-                  </header>
-                  <p className="mt-2 text-gray-700">Brief one-liner about impact and scope.</p>
-                  <p className="mt-2 text-sm text-gray-600">
-                    <time dateTime="2025-01">Jan 2025</time> · TypeScript, Performance
-                  </p>
-                  <footer className="mt-3">
-                    <a href="/work/project-two" className="underline text-sm">Read case study →</a>
-                  </footer>
-                </article>
-              </li>
-            </ul>
+        <section id="quote" aria-labelledby="quote-heading" className="py-28 border-b bg-black text-white">
+          <div className="flex flex-col justify-center items-center max-w-[70%] mx-auto text-center text-[72px] font-medium leading-[110%]">
+              <span aria-hidden="true" className="text-accent mb-4"><Image src={quoteIcon} alt="Quote" width={60} height={60} /></span>
+              I believe every experience should tell a compelling story that resonates with consumers, leaving them with a lasting sense of positivity and connection. 
           </div>
         </section>
       </AnimatedSection>
