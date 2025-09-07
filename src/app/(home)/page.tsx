@@ -10,6 +10,8 @@ import RotatingStarIcon from "@/components/RotatingStarIcon";
 import workImage from "@/assets/home-work/work1.png";
 import workImage2 from "@/assets/home-work/work2.png";
 import workImage3 from "@/assets/home-work/work3.png";
+import AnimatedImageList from "@/components/AnimatedImageList";
+import { THINGS_I_DO } from "@/assets/things-i-do/manifest";
 
 export const metadata = {
   title: "Raashi Bhandari",
@@ -105,21 +107,14 @@ export default function Home() {
         </section>
       </AnimatedSection>
 
-      {/* 3) SKILLS / STACK */}
+      {/* 3) THINGS I DO */}
       <AnimatedSection delay={0}>
         <section id="skills" aria-labelledby="skills-heading" className="default-container py-16 border-b">
-          <h2 id="skills-heading" className="text-2xl font-semibold">Skills & Tools</h2>
-          <p className="mt-3 text-gray-700">A snapshot of the technologies I use regularly.</p>
-          <ul role="list" className="mt-6 grid grid-cols-2 sm:grid-cols-4 gap-3 text-sm">
-            <li>React</li>
-            <li>Next.js</li>
-            <li>TypeScript</li>
-            <li>Node.js</li>
-            <li>HTML5</li>
-            <li>CSS/Tailwind</li>
-            <li>Testing Library/Jest</li>
-            <li>Performance & A11y</li>
-          </ul>
+          <div className="flex gap-4 items-center mb-10">
+            <RotatingStarIcon />
+            <h2 className="text-[52px] font-700 font-bold" id="skills-heading">Things I do</h2>
+          </div>
+          <AnimatedImageList data={THINGS_I_DO}/>
         </section>
       </AnimatedSection>
 
