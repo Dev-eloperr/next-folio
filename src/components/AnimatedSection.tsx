@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 
-type AnimationType = 'fade' | 'slideUp' | 'slideDown' | 'slideLeft' | 'slideRight' | 'scale' | 'scaleX' | 'scaleY';
+type AnimationType = 'fade' | 'slideUp' | 'slideDown' | 'slideLeft' | 'slideRight' | 'scale' | 'scaleX' | 'scaleY' | 'rotateY';
 
 interface AnimatedSectionProps {
   children: React.ReactNode;
@@ -63,6 +63,12 @@ const getAnimationStyles = (animationType: AnimationType, distance: number, isVi
         ...baseStyles,
         transform: isVisible ? 'scaleY(1)' : 'scaleY(0)',
         transformOrigin: 'bottom'
+      };
+    case 'rotateY':
+      return {
+        ...baseStyles,
+        transform: isVisible ? 'rotateY(0)' : 'rotateY(90deg)',
+        transformOrigin: 'center'
       };
     default:
       return baseStyles;
