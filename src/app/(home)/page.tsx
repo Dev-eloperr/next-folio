@@ -13,6 +13,8 @@ import workImage3 from "@/assets/home-work/work3.png";
 import AnimatedImageList from "@/components/AnimatedImageList";
 import { THINGS_I_DO } from "@/assets/things-i-do/manifest";
 import quoteIcon from "@/assets/others/quote_icon.svg";
+import { TESTIMONIALS } from "@/assets/testimonials/manifest";
+import Carousel from "@/components/Carousel";
 
 export const metadata = {
   title: "Raashi Bhandari",
@@ -201,6 +203,47 @@ export default function Home() {
             positivity and connection.
           </AnimatedSection>
         </div>
+      </section>
+      {/* 5) WHAT OTHERS ARE SAYING */}
+      <section
+        id="testimonials"
+        aria-labelledby="testimonials-heading"
+        className="default-container py-16"
+      >
+        <div className="flex gap-4 items-center mb-10">
+          <RotatingStarIcon />
+          <AnimatedText
+            text="What others are saying"
+            className="text-[52px] font-700 font-bold"
+            wordDelay={0}
+            baseDelay={0}
+          />
+        </div>
+        <Carousel data={TESTIMONIALS.map((item) => ({
+            body: item.quote,
+            imageSrc: item.imageSrc,
+            caption: item.name,
+            subcaption: item.position,
+            imageFilter: "grayscale(100%)"
+        }))} />
+        {/* <AnimatedImageList data={TESTIMONIALS} /> */}
+      </section>
+      {/* 6) MY PROCESS */}
+      <section
+        id="process"
+        aria-labelledby="process-heading"
+        className="bg-black text-white py-16"
+      >
+        <div className="default-container flex gap-4 items-center mb-10">
+          <RotatingStarIcon />
+          <AnimatedText
+            text="My process"
+            className="text-[52px] font-700 font-bold"
+            wordDelay={0}
+            baseDelay={0}
+          />
+        </div>
+        {/* <AnimatedImageList data={OUR_PROCESS} /> */}
       </section>
     </main>
   );
