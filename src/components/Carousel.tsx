@@ -4,6 +4,39 @@ import { StaticImageData } from "next/image";
 import Image from "next/image";
 import { useState } from "react";
 
+const ArrowIcon = ({ direction }: { direction: "left" | "right" }) => {
+    // mirror if left
+    const transform = direction === "left" ? "" : "rotate(180deg)";
+    return (
+      <svg
+        className="w-10 h-10 text-gray-700 transform"
+        style={{ transform }}
+        fill="none"
+        stroke="black"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+          <>
+            {/* extra-long tail from the right, ending just before tip (x≈8) */}
+            <path
+              strokeLinecap="square"
+              strokeLinejoin="round"
+              strokeWidth={1.5}
+              d="M28 12H3.2"
+            />
+            {/* arrowhead */}
+            <path
+              strokeLinecap="square"
+              strokeLinejoin="round"
+              strokeWidth={1.5}
+              d="M8 17l-5-5 5-5"
+            />
+          </>
+      </svg>
+    );
+  };
+  
+
 export default function Carousel({ data }: { data: 
     {
         body: string;
@@ -12,7 +45,7 @@ export default function Carousel({ data }: { data:
         subcaption: string;
         imageFilter?: string;
     }[]
-}) {
+}) { 
     const [currentIndex, setCurrentIndex] = useState(0);
 
     const goToPrevious = () => {
@@ -48,7 +81,7 @@ export default function Carousel({ data }: { data:
                             <div className={`absolute inset-0 rounded-lg ${currentItem.imageFilter}`}></div>
                         )}
                     </div>
-                    
+                     
                     {/* Content */}
                     <div className="text-center space-y-2">
                         <p className="text-2xl font-secondary text-gray-600 leading-relaxed">{currentItem.body}</p>
@@ -60,27 +93,23 @@ export default function Carousel({ data }: { data:
                 {/* Navigation arrows for mobile */}
                 <button
                     onClick={goToPrevious}
-                    className="absolute left-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/80 hover:bg-white shadow-md transition-colors"
+                    className="absolute left-2 top-1/2 -translate-y-1/2 p-2  bg-white/80 hover:bg-white shadow-md transition-colors"
                     aria-label="Previous item"
                 >
-                    <svg className="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                    </svg>
+                    <ArrowIcon direction="left" />
                 </button>
                 
                 <button
                     onClick={goToNext}
-                    className="absolute right-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-white/80 hover:bg-white shadow-md transition-colors"
+                    className="absolute right-2 top-1/2 -translate-y-1/2 p-2  bg-white/80 hover:bg-white shadow-md transition-colors"
                     aria-label="Next item"
                 >
-                    <svg className="w-5 h-5 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
+                    <ArrowIcon direction="right" />
                 </button>
             </div>
 
             {/* Desktop Layout (>= md): Side by side */}
-            <div className="hidden md:flex md:gap-8 md:items-center">
+            <div className="hidden md:flex md:gap-20 md:items-center">
                 {/* Left side: Image */}
                 <div className="relative w-1/3 flex-shrink-0 h-150">
                     <Image 
@@ -104,32 +133,28 @@ export default function Carousel({ data }: { data:
                     </div>
                     
                     {/* Navigation arrows */}
-                    <div className="flex gap-4">
+                    <div className="flex gap-1">
                         <button
                             onClick={goToPrevious}
-                            className="p-3 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors"
+                            className="hover:cursor-pointer"
                             aria-label="Previous item"
                         >
-                            <svg className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                            </svg>
+                            <ArrowIcon direction="left" />
                         </button>
                         
                         <button
                             onClick={goToNext}
-                            className="p-3 rounded-full bg-gray-100 hover:bg-gray-200 transition-colors"
+                            className="hover:cursor-pointer"
                             aria-label="Next item"
                         >
-                            <svg className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                            </svg>
+                            <ArrowIcon direction="right" />
                         </button>
                     </div>
                 </div>
             </div>
 
             {/* Dots indicator */}
-            <div className="flex justify-center mt-6 space-x-2">
+            {/* <div className="flex justify-center mt-6 space-x-2">
                 {data.map((_, index) => (
                     <button
                         key={index}
@@ -142,7 +167,7 @@ export default function Carousel({ data }: { data:
                         aria-label={`Go to item ${index + 1}`}
                     />
                 ))}
-            </div>
+            </div> */}
         </div>
     );
 }
