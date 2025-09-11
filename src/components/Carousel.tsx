@@ -126,14 +126,14 @@ export default function Carousel({ data }: { data:
                 {/* Right side: Content and navigation */}
                 <div className="w-2/3 space-y-6">
                     {/* Content */}
-                    <div className="space-y-4">
-                        <p className="text-2xl font-secondary text-gray-600 leading-relaxed">{currentItem.body}</p>
-                        <h3 className="text-2xl font-semibold">{currentItem.caption}</h3>
-                        <p className="text-gray-500">{currentItem.subcaption}</p>
+                    <div className="space-y-4 font-secondary">
+                        <p className="text-2xl font-medium leading-relaxed">{currentItem.body}</p>
+                        <h3 className="text-xl">{currentItem.caption}</h3>
+                        <p className="text-lg">{currentItem.subcaption}</p>
                     </div>
                     
                     {/* Navigation arrows */}
-                    <div className="flex gap-1">
+                    <div className="flex gap-2">
                         <button
                             onClick={goToPrevious}
                             className="hover:cursor-pointer"
