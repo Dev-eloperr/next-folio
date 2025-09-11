@@ -2,7 +2,7 @@
 
 import { StaticImageData } from "next/image";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const ArrowIcon = ({ direction }: { direction: "left" | "right" }) => {
     // mirror if left
@@ -47,17 +47,32 @@ export default function Carousel({ data }: { data:
     }[]
 }) { 
     const [currentIndex, setCurrentIndex] = useState(0);
+    const [isTransitioning, setIsTransitioning] = useState(false);
+    const [displayIndex, setDisplayIndex] = useState(0);
+
+    const handleTransition = (newIndex: number) => {
+        if (isTransitioning || newIndex === currentIndex) return;
+        
+        setIsTransitioning(true);
+        
+        // After fade out completes, change the content and fade in
+        setTimeout(() => {
+            setCurrentIndex(newIndex);
+            setDisplayIndex(newIndex);
+            setTimeout(() => {
+                setIsTransitioning(false);
+            }, 250); // Fade in duration
+        }, 250); // Fade out duration
+    };
 
     const goToPrevious = () => {
-        setCurrentIndex((prevIndex) => 
-            prevIndex === 0 ? data.length - 1 : prevIndex - 1
-        );
+        const newIndex = currentIndex === 0 ? data.length - 1 : currentIndex - 1;
+        handleTransition(newIndex);
     };
 
     const goToNext = () => {
-        setCurrentIndex((prevIndex) => 
-            prevIndex === data.length - 1 ? 0 : prevIndex + 1
-        );
+        const newIndex = currentIndex === data.length - 1 ? 0 : currentIndex + 1;
+        handleTransition(newIndex);
     };
 
     if (!data || data.length === 0) return null;
@@ -78,12 +93,14 @@ export default function Carousel({ data }: { data:
                             fill
                         />
                         {currentItem.imageFilter && (
-                            <div className={`absolute inset-0 rounded-lg ${currentItem.imageFilter}`}></div>
+                            <div className="absolute inset-0 rounded-lg bg-accent/80 mix-blend-multiply"></div>
                         )}
                     </div>
                      
                     {/* Content */}
-                    <div className="text-center space-y-2">
+                    <div className={`text-center space-y-2 transition-opacity duration-250 ease-in-out ${
+                        isTransitioning ? 'opacity-20' : 'opacity-100'
+                    }`}>
                         <p className="text-2xl font-secondary text-gray-600 leading-relaxed">{currentItem.body}</p>
                         <h3 className="text-lg font-semibold">{currentItem.caption}</h3>
                         <p className="text-sm text-gray-500">{currentItem.subcaption}</p>
@@ -119,14 +136,16 @@ export default function Carousel({ data }: { data:
                         fill
                     />
                     {currentItem.imageFilter && (
-                        <div className={`absolute inset-0 rounded-lg ${currentItem.imageFilter}`}></div>
+                        <div className="absolute inset-0 rounded-lg bg-accent/80 mix-blend-multiply"></div>
                     )}
                 </div>
                 
                 {/* Right side: Content and navigation */}
                 <div className="w-2/3 space-y-6">
                     {/* Content */}
-                    <div className="space-y-4 font-secondary">
+                    <div className={`space-y-4 font-secondary transition-opacity duration-500 ${
+                        isTransitioning ? 'opacity-20' : 'opacity-100'
+                    }`}>
                         <p className="text-2xl font-medium leading-relaxed">{currentItem.body}</p>
                         <h3 className="text-xl">{currentItem.caption}</h3>
                         <p className="text-lg">{currentItem.subcaption}</p>

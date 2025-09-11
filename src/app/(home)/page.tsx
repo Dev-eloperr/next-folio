@@ -224,7 +224,7 @@ export default function Home() {
             imageSrc: item.imageSrc,
             caption: item.name,
             subcaption: item.position,
-            imageFilter: "bg-accent/60"
+            imageFilter: "accent"
         }))} />
         {/* <AnimatedImageList data={TESTIMONIALS} /> */}
       </section>
