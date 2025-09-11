@@ -110,16 +110,18 @@ export default function Carousel({ data }: { data:
                 {/* Navigation arrows for mobile */}
                 <button
                     onClick={goToPrevious}
-                    className="absolute left-2 top-1/2 -translate-y-1/2 p-2  bg-white/80 hover:bg-white shadow-md transition-colors"
+                    className="absolute left-2 top-1/2 -translate-y-1/2 p-2  bg-white/80 hover:bg-white shadow-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     aria-label="Previous item"
+                    disabled={currentIndex === 0}
                 >
                     <ArrowIcon direction="left" />
                 </button>
                 
                 <button
                     onClick={goToNext}
-                    className="absolute right-2 top-1/2 -translate-y-1/2 p-2  bg-white/80 hover:bg-white shadow-md transition-colors"
+                    className="absolute right-2 top-1/2 -translate-y-1/2 p-2  bg-white/80 hover:bg-white shadow-md transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     aria-label="Next item"
+                    disabled={currentIndex === data.length - 1}
                 >
                     <ArrowIcon direction="right" />
                 </button>
@@ -155,16 +157,18 @@ export default function Carousel({ data }: { data:
                     <div className="flex gap-2">
                         <button
                             onClick={goToPrevious}
-                            className="hover:cursor-pointer"
+                            className="hover:cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                             aria-label="Previous item"
+                            disabled={currentIndex === 0}
                         >
                             <ArrowIcon direction="left" />
                         </button>
                         
                         <button
                             onClick={goToNext}
-                            className="hover:cursor-pointer"
+                            className="hover:cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
                             aria-label="Next item"
+                            disabled={currentIndex === data.length - 1}
                         >
                             <ArrowIcon direction="right" />
                         </button>

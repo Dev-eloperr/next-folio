@@ -15,6 +15,8 @@ import { THINGS_I_DO } from "@/assets/things-i-do/manifest";
 import quoteIcon from "@/assets/others/quote_icon.svg";
 import { TESTIMONIALS } from "@/assets/testimonials/manifest";
 import Carousel from "@/components/Carousel";
+import FancyList from "@/components/FancyList";
+import { PROCESS } from "./process";
 
 export const metadata = {
   title: "Raashi Bhandari",
@@ -61,7 +63,7 @@ export default function Home() {
           animationType="fade"
           delay={200}
           threshold={0.8}
-          duration={1200}
+          duration={1000}
         >
           {/* Images of companies worked for */}
           <div className="flex justify-between mt-20">
@@ -188,7 +190,7 @@ export default function Home() {
       >
         <div className="flex flex-col justify-center items-center max-w-[70%] mx-auto text-center text-[72px] font-medium leading-[110%]">
           <AnimatedSection
-            delay={0}
+            delay={200}
             animationType="rotateY"
             className="mb-8"
             threshold={0.5}
@@ -197,7 +199,7 @@ export default function Home() {
               <Image src={quoteIcon} alt="Quote" width={80} height={80} />
             </span>
           </AnimatedSection>
-          <AnimatedSection delay={0} threshold={0.5}>
+          <AnimatedSection delay={200} threshold={0.5}>
             I believe every experience should tell a compelling story that
             resonates with consumers, leaving them with a lasting sense of
             positivity and connection.
@@ -219,13 +221,15 @@ export default function Home() {
             baseDelay={0}
           />
         </div>
-        <Carousel data={TESTIMONIALS.map((item) => ({
+        <Carousel
+          data={TESTIMONIALS.map((item) => ({
             body: item.quote,
             imageSrc: item.imageSrc,
             caption: item.name,
             subcaption: item.position,
-            imageFilter: "accent"
-        }))} />
+            imageFilter: "accent",
+          }))}
+        />
         {/* <AnimatedImageList data={TESTIMONIALS} /> */}
       </section>
       {/* 6) MY PROCESS */}
@@ -234,16 +238,18 @@ export default function Home() {
         aria-labelledby="process-heading"
         className="bg-black text-white py-16"
       >
-        <div className="default-container flex gap-4 items-center mb-10">
-          <RotatingStarIcon />
-          <AnimatedText
-            text="My process"
-            className="text-[52px] font-700 font-bold"
-            wordDelay={0}
-            baseDelay={0}
-          />
+        <div className="default-container">
+          <div className="flex gap-4 items-center mb-10">
+            <RotatingStarIcon />
+            <AnimatedText
+              text="My process"
+              className="text-[52px] font-700 font-bold"
+              wordDelay={0}
+              baseDelay={0}
+            />
+          </div>
+          <FancyList data={PROCESS} />
         </div>
-        {/* <AnimatedImageList data={OUR_PROCESS} /> */}
       </section>
     </main>
   );
